@@ -9,8 +9,8 @@ import static java.lang.Math.*;
  */
 public class VolumeFigure {
     public static void main(String [ ] args){
-        Sphere tetrahedron=new Sphere(2);
-        System.out.println("volume of figure: " + round(foundVolumeFigure(tetrahedron)));
+        Object figure=new Sphere(9);
+        System.out.println("volume of figure: " + round(foundVolumeFigure(figure)));
 
     }
 
@@ -45,7 +45,7 @@ public class VolumeFigure {
             Tetrahedron tetrahedron = (Tetrahedron) figure;
             volume = (pow(tetrahedron.getEdgeA(), 3) * sqrt(2)) / 12;
         } else {
-            throw new RuntimeException("it is not figure");
+            throw new RuntimeException(figure+" it is not figure");
         }
 
 
