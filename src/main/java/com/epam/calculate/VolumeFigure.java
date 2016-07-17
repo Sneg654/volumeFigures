@@ -45,7 +45,7 @@ public class VolumeFigure {
             Tetrahedron tetrahedron = (Tetrahedron) figure;
             volume = (pow(tetrahedron.getEdgeA(), 3) * sqrt(2)) / 12;
         } else {
-            throw new RuntimeException(figure+" it is not figure");
+            throw new RuntimeException(figure+" is not figure");
         }
 
 
