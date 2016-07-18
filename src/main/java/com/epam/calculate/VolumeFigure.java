@@ -24,6 +24,9 @@ public class VolumeFigure {
     private static final String HELP = "HELP";
     private static final String START_MESSAGE = "Enter  name figure and parameters for calculate volume(for help: enter HELP):";
     private static final int FIRST_PARAM = 0;
+    private static final int SECOND_PARAM = 1;
+    private static final int THIRD_PARAM = 2;
+    private static final int FOURTH_PARAM = 3;
     private static final String HELP_MESSAGE = "YOU CAN write next variants message:\n" +
             "CONE,radius,height;\n" +
             "CUBE,edgeA;\n" +
@@ -35,7 +38,11 @@ public class VolumeFigure {
             "SPHERE,radius;\n" +
             "TETRAHEDRON,edgeA.\n" +
             "*radius,height,edgeA,edgeB,squareBase  must be integer and more 0";
-
+    private static final String INCORRECT_PARAM="You have entered incorrect parameters\n";
+    private static final String NOT_ALL_PARAM="You have entered not all parameters\n";
+    private static final String NOT_FIGURE=" is not figure\n";
+    private static final String PARAM_MUST_BE_MORE_ZERO="parameters must be more 0\n";
+    private static final String VOLUME_OF_FIGURE="volume of figure: ";
 
     public static void main(String[] args) {
 
@@ -63,54 +70,55 @@ public class VolumeFigure {
                     textMessage = HELP_MESSAGE;
                     break;
                 case CONE:
-                    Cone cone = new Cone(Integer.valueOf(params[1]), Integer.valueOf(params[2]));
-                    volume = 1 / 3 * (PI * pow(cone.getRadius(), 2) * cone.getHeight());
+                    Cone cone = new Cone(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    volume = (PI * pow(cone.getRadius(), 2) * cone.getHeight())/3;
                     break;
                 case CUBE:
                     Cube cube = new Cube(Integer.valueOf(params[1]));
                     volume = pow(cube.getEdgeA(), 3);
                     break;
                 case CUBOID:
-                    Cuboid cuboid = new Cuboid(Integer.valueOf(params[1]), Integer.valueOf(params[2]), (Integer.valueOf(params[3])));
+                    Cuboid cuboid = new Cuboid(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]),
+                            (Integer.valueOf(params[FOURTH_PARAM])));
                     volume = cuboid.getEdgeA() * cuboid.getEdgeB() * cuboid.getHeight();
                     break;
                 case CYLINDER:
-                    Cylinder cylinder = new Cylinder(Integer.valueOf(params[1]), Integer.valueOf(params[2]));
-                    volume = 1 / 3 * (PI * pow(cylinder.getRadius(), 2) * cylinder.getHeight());
+                    Cylinder cylinder = new Cylinder(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    volume = (PI * pow(cylinder.getRadius(), 2) * cylinder.getHeight())/3;
                     break;
                 case PARALLELEPIPED:
-                    Parallelepiped parallelepiped = new Parallelepiped(Integer.valueOf(params[1]), Integer.valueOf(params[2]));
+                    Parallelepiped parallelepiped = new Parallelepiped(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
                     volume = parallelepiped.getSquareBase() * parallelepiped.getHeight();
                     break;
                 case PRISM:
-                    Prism prism = new Prism(Integer.valueOf(params[1]), Integer.valueOf(params[2]));
+                    Prism prism = new Prism(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
                     volume = prism.getSquareBase() * prism.getHeight();
                     break;
                 case PYRAMID:
-                    Pyramid pyramid = new Pyramid(Integer.valueOf(params[1]), Integer.valueOf(params[2]));
-                    volume = 1 / 3 * (pyramid.getSquareBase() * pyramid.getHeight());
+                    Pyramid pyramid = new Pyramid(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    volume = (pyramid.getSquareBase() * pyramid.getHeight())/3;
                     break;
                 case SPHERE:
-                    Sphere sphere = new Sphere(Integer.valueOf(params[1]));
-                    volume = 4 / 3 * (PI * pow(sphere.getRadius(), 3));
+                    Sphere sphere = new Sphere(Integer.valueOf(params[SECOND_PARAM]));
+                    volume = (4 * (PI * pow(sphere.getRadius(), 3)))/3;
                     break;
                 case TETRAHEDRON:
-                    Tetrahedron tetrahedron = new Tetrahedron(Integer.valueOf(params[1]));
+                    Tetrahedron tetrahedron = new Tetrahedron(Integer.valueOf(params[SECOND_PARAM]));
                     volume = (pow(tetrahedron.getEdgeA(), 3) * sqrt(2)) / 12;
                     break;
                 default:
-                    textMessage = params[0] + " is not figure\n";
+                    textMessage = params[0] + NOT_FIGURE ;
                     break;
             }
         } catch (NumberFormatException e) {
-            textMessage = "You have entered incorrect parameters\n";
+            textMessage = INCORRECT_PARAM;
         } catch (ArrayIndexOutOfBoundsException e) {
-            textMessage = "You have entered not all parameters\n";
+            textMessage = NOT_ALL_PARAM;
         }
-        if (volume > 0d) {
-            textMessage = "volume of figure: " + round(volume) + "\n";
+        if (volume > 0) {
+            textMessage = VOLUME_OF_FIGURE + round(volume) + "\n";
         } else if (textMessage == null)
-            textMessage = "parameters must be more 0\n";
+            textMessage =PARAM_MUST_BE_MORE_ZERO ;
 
         return textMessage;
     }
