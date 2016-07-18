@@ -53,7 +53,7 @@ public class VolumeFigure {
 
     }
 
-    private static String foundVolumeFigure(String[] params) {
+    public static String foundVolumeFigure(String[] params) {
         double volume = 0;
         String textMessage = null;
 
