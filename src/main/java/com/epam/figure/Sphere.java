@@ -4,13 +4,13 @@ package com.epam.figure;
  * Created by Sergey_Stefoglo on 7/17/2016.
  */
 public class Sphere {
-    private int radius;
+    private double radius;
 
-    public int getRadius() {
+    public double getRadius() {
         return radius;
     }
 
-    public Sphere(int radius) {
+    public Sphere(double radius) {
         this.radius = radius;
     }
 }

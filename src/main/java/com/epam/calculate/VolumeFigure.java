@@ -53,7 +53,7 @@ public class VolumeFigure {
         System.out.println(START_MESSAGE);
         while (sc.hasNext()) {
             enterString = sc.next();
-            params = enterString.split(",");
+            params = enterString.replaceAll(" ","").split(",");
             System.out.println(foundVolumeFigure(params));
             System.out.println(START_MESSAGE);
         }
@@ -70,40 +70,40 @@ public class VolumeFigure {
                     textMessage = HELP_MESSAGE;
                     break;
                 case CONE:
-                    Cone cone = new Cone(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    Cone cone = new Cone(Double.valueOf(params[SECOND_PARAM]), Double.valueOf(params[THIRD_PARAM]));
                     volume = (PI * pow(cone.getRadius(), 2) * cone.getHeight())/3;
                     break;
                 case CUBE:
-                    Cube cube = new Cube(Integer.valueOf(params[1]));
+                    Cube cube = new Cube(Double.valueOf(params[SECOND_PARAM]));
                     volume = pow(cube.getEdgeA(), 3);
                     break;
                 case CUBOID:
-                    Cuboid cuboid = new Cuboid(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]),
-                            (Integer.valueOf(params[FOURTH_PARAM])));
+                    Cuboid cuboid = new Cuboid(Double.valueOf(params[SECOND_PARAM]), Double.valueOf(params[THIRD_PARAM]),
+                            (Double.valueOf(params[FOURTH_PARAM])));
                     volume = cuboid.getEdgeA() * cuboid.getEdgeB() * cuboid.getHeight();
                     break;
                 case CYLINDER:
-                    Cylinder cylinder = new Cylinder(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    Cylinder cylinder = new Cylinder(Double.valueOf(params[SECOND_PARAM]), Double.valueOf(params[THIRD_PARAM]));
                     volume = (PI * pow(cylinder.getRadius(), 2) * cylinder.getHeight())/3;
                     break;
                 case PARALLELEPIPED:
-                    Parallelepiped parallelepiped = new Parallelepiped(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    Parallelepiped parallelepiped = new Parallelepiped(Double.valueOf(params[SECOND_PARAM]), Double.valueOf(params[THIRD_PARAM]));
                     volume = parallelepiped.getSquareBase() * parallelepiped.getHeight();
                     break;
                 case PRISM:
-                    Prism prism = new Prism(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    Prism prism = new Prism(Double.valueOf(params[SECOND_PARAM]), Double.valueOf(params[THIRD_PARAM]));
                     volume = prism.getSquareBase() * prism.getHeight();
                     break;
                 case PYRAMID:
-                    Pyramid pyramid = new Pyramid(Integer.valueOf(params[SECOND_PARAM]), Integer.valueOf(params[THIRD_PARAM]));
+                    Pyramid pyramid = new Pyramid(Double.valueOf(params[SECOND_PARAM]), Double.valueOf(params[THIRD_PARAM]));
                     volume = (pyramid.getSquareBase() * pyramid.getHeight())/3;
                     break;
                 case SPHERE:
-                    Sphere sphere = new Sphere(Integer.valueOf(params[SECOND_PARAM]));
+                    Sphere sphere = new Sphere(Double.valueOf(params[SECOND_PARAM]));
                     volume = (4 * (PI * pow(sphere.getRadius(), 3)))/3;
                     break;
                 case TETRAHEDRON:
-                    Tetrahedron tetrahedron = new Tetrahedron(Integer.valueOf(params[SECOND_PARAM]));
+                    Tetrahedron tetrahedron = new Tetrahedron(Double.valueOf(params[SECOND_PARAM]));
                     volume = (pow(tetrahedron.getEdgeA(), 3) * sqrt(2)) / 12;
                     break;
                 default:
@@ -116,7 +116,7 @@ public class VolumeFigure {
             textMessage = NOT_ALL_PARAM;
         }
         if (volume > 0) {
-            textMessage = VOLUME_OF_FIGURE + round(volume) + "\n";
+            textMessage = VOLUME_OF_FIGURE + volume + "\n";
         } else if (textMessage == null)
             textMessage =PARAM_MUST_BE_MORE_ZERO ;
 

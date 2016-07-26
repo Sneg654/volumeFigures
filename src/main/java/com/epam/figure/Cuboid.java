@@ -4,23 +4,23 @@ package com.epam.figure;
  * Created by Sergey_Stefoglo on 7/17/2016.
  */
 public class Cuboid {
-    private int height;
-    private int edgeA;
-    private int edgeB;
+    private double height;
+    private double edgeA;
+    private double edgeB;
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public int getEdgeA() {
+    public double getEdgeA() {
         return edgeA;
     }
 
-    public int getEdgeB() {
+    public double getEdgeB() {
         return edgeB;
     }
 
-    public Cuboid(int height, int edgeA, int edgeB) {
+    public Cuboid(double height, double edgeA, double edgeB) {
         this.height = height;
         this.edgeA = edgeA;
         this.edgeB = edgeB;

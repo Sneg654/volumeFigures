@@ -1,19 +1,19 @@
 package com.epam.figure;
 
 public class Pyramid {
-    private int height;
-    private int squareBase;
+    private double height;
+    private double squareBase;
 
-    public Pyramid(int h, int sBase) {
+    public Pyramid(double h, double sBase) {
         this.height = h;
         this.squareBase = sBase;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public int getSquareBase() {
+    public double getSquareBase() {
         return squareBase;
     }
 }

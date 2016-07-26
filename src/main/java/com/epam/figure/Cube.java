@@ -4,13 +4,13 @@ package com.epam.figure;
  * Created by Sergey_Stefoglo on 7/17/2016.
  */
 public class Cube {
-    private int edgeA;
+    private double edgeA;
 
-    public Cube(int edgeA) {
+    public Cube(double edgeA) {
         this.edgeA = edgeA;
     }
 
-    public int getEdgeA() {
+    public double getEdgeA() {
         return edgeA;
     }
 }

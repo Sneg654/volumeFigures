@@ -4,18 +4,18 @@ package com.epam.figure;
  * Created by Sergey_Stefoglo on 7/17/2016.
  */
 public class Prism {
-    private int height;
-    private int squareBase;
+    private double height;
+    private double squareBase;
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public int getSquareBase() {
+    public double getSquareBase() {
         return squareBase;
     }
 
-    public Prism(int h, int sBase) {
+    public Prism(double h, double sBase) {
         this.height = h;
         this.squareBase = sBase;
     }

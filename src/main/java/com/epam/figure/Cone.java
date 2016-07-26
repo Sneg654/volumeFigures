@@ -4,18 +4,18 @@ package com.epam.figure;
  * Created by Sergey_Stefoglo on 7/17/2016.
  */
 public class Cone {
-    private int radius;
-    private int height;
+    private double radius;
+    private double height;
 
-    public int getRadius() {
+    public double getRadius() {
         return radius;
     }
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public Cone(int radius, int height) {
+    public Cone(double radius, double height) {
         this.radius = radius;
         this.height = height;
     }
