@@ -2,6 +2,7 @@ package com.epam.calculate;
 
 import com.epam.figure.*;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 import static java.lang.Math.*;
@@ -44,7 +45,9 @@ public class VolumeFigure {
     private static final String PARAM_MUST_BE_MORE_ZERO="parameters must be more 0\n";
     private static final String VOLUME_OF_FIGURE="volume of figure: ";
     private static final double ZERO_VOLUME_FIGURE=0;
-
+    public static final String INCORRECT_DELIMETER=" ";
+    public static final String REPLACE_INCORRECT_DELIMETER="";
+    public static final String DELIMETER=",";
 
     public static void main(String[] args) {
 
@@ -55,7 +58,7 @@ public class VolumeFigure {
         System.out.println(START_MESSAGE);
         while (sc.hasNextLine()) {
             enterString = sc.nextLine();
-            params = enterString.replaceAll(" ","").split(",");
+            params = enterString.replaceAll(INCORRECT_DELIMETER,REPLACE_INCORRECT_DELIMETER).split(DELIMETER);
             System.out.println(foundVolumeFigure(params));
             System.out.println(START_MESSAGE);
         }
@@ -65,7 +68,7 @@ public class VolumeFigure {
     public static String foundVolumeFigure(String[] params) {
         double volume = 0;
         String textMessage = null;
-
+        DecimalFormat df = new DecimalFormat("0.0000");
         try {
             switch (params[FIRST_PARAM].toUpperCase()) {
                 case HELP:
@@ -117,8 +120,9 @@ public class VolumeFigure {
         } catch (ArrayIndexOutOfBoundsException e) {
             textMessage = NOT_ALL_PARAM;
         }
+
         if (volume > ZERO_VOLUME_FIGURE) {
-            textMessage = VOLUME_OF_FIGURE + volume + "\n";
+          textMessage = VOLUME_OF_FIGURE + df.format(volume) + "\n";
         } else if (textMessage == null)
             textMessage =PARAM_MUST_BE_MORE_ZERO ;
 
