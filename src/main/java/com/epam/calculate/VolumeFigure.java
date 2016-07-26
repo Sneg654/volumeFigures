@@ -43,6 +43,8 @@ public class VolumeFigure {
     private static final String NOT_FIGURE=" is not figure\n";
     private static final String PARAM_MUST_BE_MORE_ZERO="parameters must be more 0\n";
     private static final String VOLUME_OF_FIGURE="volume of figure: ";
+    private static final double ZERO_VOLUME_FIGURE=0;
+
 
     public static void main(String[] args) {
 
@@ -51,8 +53,8 @@ public class VolumeFigure {
         String enterString;
         String[] params;
         System.out.println(START_MESSAGE);
-        while (sc.hasNext()) {
-            enterString = sc.next();
+        while (sc.hasNextLine()) {
+            enterString = sc.nextLine();
             params = enterString.replaceAll(" ","").split(",");
             System.out.println(foundVolumeFigure(params));
             System.out.println(START_MESSAGE);
@@ -107,7 +109,7 @@ public class VolumeFigure {
                     volume = (pow(tetrahedron.getEdgeA(), 3) * sqrt(2)) / 12;
                     break;
                 default:
-                    textMessage = params[0] + NOT_FIGURE ;
+                    textMessage = params[FIRST_PARAM] + NOT_FIGURE ;
                     break;
             }
         } catch (NumberFormatException e) {
@@ -115,7 +117,7 @@ public class VolumeFigure {
         } catch (ArrayIndexOutOfBoundsException e) {
             textMessage = NOT_ALL_PARAM;
         }
-        if (volume > 0) {
+        if (volume > ZERO_VOLUME_FIGURE) {
             textMessage = VOLUME_OF_FIGURE + volume + "\n";
         } else if (textMessage == null)
             textMessage =PARAM_MUST_BE_MORE_ZERO ;
